@@ -49,6 +49,9 @@ typedef struct s_context
 	double		disorder;
 	size_t		counts[OP_COUNT];
 	int			bench;
+	t_op		*ops;
+	size_t		ops_len;
+	size_t		ops_cap;
 }	t_context;
 
 /* parser */
@@ -56,7 +59,16 @@ typedef struct s_context
 /* sort */
 
 /* stack */
+void	free_stack(t_stack *stack);
+int		op_buffer_add(t_context *ctx, t_op op);
+void	op_buffer_optimize(t_context *ctx);
+void	op_buffer_flush(t_context *ctx);
 
 /* bench */
+
+/* utils */
+void	free_context(t_context *ctx);
+void	error_exit(t_context *ctx);
+char	**ft_split(char const *s, char c);
 
 #endif

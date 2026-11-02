@@ -21,10 +21,13 @@ SRCS		= main.c \
 			  stack/op_push.c \
 			  stack/op_rev_rotate.c \
 			  stack/op_rotate.c \
+			  stack/op_buffer.c \
 			  stack/op_swap.c \
 			  stack/operation.c \
 			  stack/stack_init.c \
-			  stack/stack_utils.c
+			  stack/stack_utils.c \
+			  utils/error.c \
+			  utils/ft_split.c
 
 OBJS		= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
