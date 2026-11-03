@@ -62,7 +62,9 @@ int		has_duplicate(const t_stack *a);
 /* sort */
 
 /* stack */
-void	free_stack(t_stack *stack);
+t_node	*node_new(int value);
+void	stack_add_back(t_stack *stack, t_node *node);
+void	stack_clear(t_stack *stack);
 int		op_buffer_add(t_context *ctx, t_op op);
 void	op_buffer_optimize(t_context *ctx);
 void	op_buffer_flush(t_context *ctx);
@@ -70,8 +72,10 @@ void	op_buffer_flush(t_context *ctx);
 /* bench */
 
 /* utils */
-void	free_context(t_context *ctx);
+void	context_clear(t_context *ctx);
 void	error_exit(t_context *ctx);
 char	**ft_split(char const *s, char c);
+void	free_split(char **ss);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif
