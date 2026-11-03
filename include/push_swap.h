@@ -55,6 +55,9 @@ typedef struct s_context
 }	t_context;
 
 /* parser */
+void	parse_args(int argc, char **argv, t_context *ctx);
+int		parse_number(const char *s, int *out);
+int		has_duplicate(const t_stack *a);
 
 /* sort */
 
