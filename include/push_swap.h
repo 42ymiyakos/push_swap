@@ -60,6 +60,7 @@ int		parse_number(const char *s, int *out);
 int		has_duplicate(const t_stack *a);
 
 /* sort */
+double	disorder_compute(const t_stack *a);
 
 /* stack */
 t_node	*node_new(int value);
