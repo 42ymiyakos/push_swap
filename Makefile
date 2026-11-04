@@ -27,7 +27,8 @@ SRCS		= main.c \
 			  stack/stack_init.c \
 			  stack/stack_utils.c \
 			  utils/error.c \
-			  utils/ft_split.c
+			  utils/ft_split.c \
+			  utils/ft_strcmp.c
 
 OBJS		= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
