@@ -6,7 +6,7 @@
 /*   By: arendo <arendo@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 16:00:45 by arendo            #+#    #+#             */
-/*   Updated: 2026/11/03 16:00:53 by arendo           ###   ########.fr       */
+/*   Updated: 2026/11/03 18:50:46 by arendo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_node	*node_new(int value)
 	return (new_node);
 }
 
-void	stack_add_back(t_stack *stack, t_node *node)
+void	stack_append(t_stack *stack, t_node *node)
 {
 	if (!stack || !node)
 		return ;
