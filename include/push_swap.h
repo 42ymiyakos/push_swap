@@ -62,15 +62,18 @@ typedef struct s_context
 void	ctx_init(t_context *ctx);
 
 /* parser */
+void	parse_args(int argc, char **argv, t_context *ctx);
+int		parse_number(const char *s, int *out);
+int		has_duplicate(const t_stack *a);
 
 /* sort */
 
 /* stack */
 t_node	*node_new(int value);
-void	stack_append(t_stack *stack, t_node *node);
-void	stack_clear(t_stack *stack);
 void	stack_init(t_stack *stack);
 int		stack_is_sorted(t_stack *stack);
+void	stack_add_back(t_stack *stack, t_node *node);
+void	stack_clear(t_stack *stack);
 int		op_buffer_add(t_context *ctx, t_op op);
 void	swap_stack(t_stack *stack);
 void	push_stack(t_stack *dst, t_stack *src);
@@ -82,8 +85,10 @@ void	execute_op(t_context *ctx, t_op op);
 /* bench */
 
 /* utils */
-void	free_context(t_context *ctx);
+void	context_clear(t_context *ctx);
 void	error_exit(t_context *ctx);
 char	**ft_split(char const *s, char c);
+void	free_split(char **ss);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif

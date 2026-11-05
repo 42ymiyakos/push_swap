@@ -10,7 +10,6 @@ OBJ_DIR		= obj
 SRCS		= main.c \
 			  bench/print_bench.c \
 			  context/ctx_init.c \
-			  context/ctx_free.c \
 			  parser/parse_args.c \
 			  parser/parse_number.c \
 			  parser/validate.c \
@@ -31,7 +30,8 @@ SRCS		= main.c \
 			  stack/stack_init.c \
 			  stack/stack_utils.c \
 			  utils/error.c \
-			  utils/ft_split.c
+			  utils/ft_split.c \
+			  utils/ft_strcmp.c
 
 OBJS		= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 

@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ctx_free.c                                         :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arendo <arendo@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/05 15:11:13 by arendo            #+#    #+#             */
-/*   Updated: 2026/11/05 15:27:39 by arendo           ###   ########.fr       */
+/*   Created: 2026/11/03 16:00:00 by ymiyakos          #+#    #+#             */
+/*   Updated: 2026/11/03 16:18:17 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// 文字列の完全一致比較 (フラグ判定用)
+
 #include "push_swap.h"
 
-void	free_context(t_context *ctx)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	if (!ctx)
-		return ;
-	stack_clear(&ctx->a);
-	stack_clear(&ctx->b);
-	free(ctx->ops);
+	size_t	i;
+
+	i = 0;
+	while (s1[i] && s1[i] == s2[i])
+		++i;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
