@@ -1,2 +1,20 @@
-// free_context : A, B, 命令バッファを解放
-// error_exit   : free_context → stderr に "Error\n" → exit(1)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arendo <arendo@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/05 15:29:11 by arendo            #+#    #+#             */
+/*   Updated: 2026/11/05 15:29:11 by arendo           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void	error_exit(t_context *ctx)
+{
+	free_context(ctx);
+	write(2, "Error\n", 6);
+	exit(1);
+}

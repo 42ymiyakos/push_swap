@@ -2,6 +2,10 @@
 # define PUSH_SWAP_H
 
 # include <stddef.h>
+# include <stdlib.h>
+# include <unistd.h>
+
+# define OPS_INIT_CAP 256
 
 typedef struct s_node
 {
@@ -54,15 +58,26 @@ typedef struct s_context
 	size_t		ops_cap;
 }	t_context;
 
+/* context */
+void	ctx_init(t_context *ctx);
+
 /* parser */
 
 /* sort */
 
 /* stack */
-void	free_stack(t_stack *stack);
+t_node	*node_new(int value);
+void	stack_append(t_stack *stack, t_node *node);
+void	stack_clear(t_stack *stack);
+void	stack_init(t_stack *stack);
+int		stack_is_sorted(t_stack *stack);
 int		op_buffer_add(t_context *ctx, t_op op);
-void	op_buffer_optimize(t_context *ctx);
-void	op_buffer_flush(t_context *ctx);
+void	swap_stack(t_stack *stack);
+void	push_stack(t_stack *dst, t_stack *src);
+void	rotate_stack(t_stack *stack);
+void	rev_rotate_stack(t_stack *stack);
+int		apply_op(t_op op, t_stack *a, t_stack *b);
+void	execute_op(t_context *ctx, t_op op);
 
 /* bench */
 
