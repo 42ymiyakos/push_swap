@@ -70,10 +70,6 @@ int		has_duplicate(const t_stack *a);
 double	disorder_compute(const t_stack *a);
 
 /* stack */
-void	swap_stack(t_stack *stack);
-void	push_stack(t_stack *dst, t_stack *src);
-void	rotate_stack(t_stack *stack);
-void	rev_rotate_stack(t_stack *stack);
 t_node	*node_new(int value);
 void	stack_init(t_stack *stack);
 int		stack_is_sorted(t_stack *stack);
