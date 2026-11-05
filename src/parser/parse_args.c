@@ -6,7 +6,7 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 15:20:35 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/03 18:42:29 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/05 14:32:17 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	add_numbers(const char *arg, t_context *ctx)
 			node = node_new(value);
 		if (!node)
 			split_error(nums, ctx);
-		stack_add_back(&ctx->a, node);
+		stack_append(&ctx->a, node);
 		++i;
 	}
 	free_split(nums);

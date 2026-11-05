@@ -19,19 +19,17 @@ void	swap_stack(t_stack *stack)
 	t_node	*third;
 
 	if (!stack || stack->size < 2)
-		return;
+		return ;
 	first = stack->head;
 	second = first->next;
 	third = second->next;
 	first->prev = second;
 	first->next = third;
 	second->prev = NULL;
-	second->next = first
+	second->next = first;
 	if (third)
 		third->prev = first;
 	stack->head = second;
 	if (stack->size == 2)
 		stack->tail = first;
 }
-
-
