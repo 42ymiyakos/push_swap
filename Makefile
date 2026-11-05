@@ -18,14 +18,13 @@ SRCS		= main.c \
 			  sort/medium.c \
 			  sort/normalize.c \
 			  sort/simple.c \
-			  stack/op_push.c \
-			  stack/op_rev_rotate.c \
-			  stack/op_rotate.c \
 			  stack/op_buffer.c \
-			  stack/op_swap.c \
 			  stack/operation.c \
-			  stack/stack_init.c \
-			  stack/stack_utils.c \
+			  stack/ops_push.c \
+			  stack/ops_rev_rotate.c \
+			  stack/ops_rotate.c \
+			  stack/ops_swap.c \
+			  stack/stack.c \
 			  utils/error.c \
 			  utils/ft_split.c \
 			  utils/ft_strcmp.c

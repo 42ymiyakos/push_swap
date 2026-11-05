@@ -63,8 +63,12 @@ int		has_duplicate(const t_stack *a);
 double	disorder_compute(const t_stack *a);
 
 /* stack */
+void	swap_stack(t_stack *stack);
+void	push_stack(t_stack *dst, t_stack *src);
+void	rotate_stack(t_stack *stack);
+void	rev_rotate_stack(t_stack *stack);
 t_node	*node_new(int value);
-void	stack_add_back(t_stack *stack, t_node *node);
+void	stack_append(t_stack *stack, t_node *node);
 void	stack_clear(t_stack *stack);
 int		op_buffer_add(t_context *ctx, t_op op);
 void	op_buffer_optimize(t_context *ctx);
