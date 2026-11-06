@@ -82,6 +82,7 @@ void	rotate_stack(t_stack *stack);
 void	rev_rotate_stack(t_stack *stack);
 int		apply_op(t_op op, t_stack *a, t_stack *b);
 void	execute_op(t_context *ctx, t_op op);
+void	op_buffer_flush(t_context *ctx);
 
 /* bench */
 
