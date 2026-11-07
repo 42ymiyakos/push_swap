@@ -86,6 +86,8 @@ void	sort_simple(t_context *ctx);
 t_node	*node_new(int value);
 void	stack_init(t_stack *stack);
 int		stack_is_sorted(t_stack *stack);
+size_t	stack_min_pos(const t_stack *stack);
+size_t	stack_max_pos(const t_stack *stack);
 void	stack_append(t_stack *stack, t_node *node);
 void	stack_clear(t_stack *stack);
 int		op_buffer_add(t_context *ctx, t_op op);
