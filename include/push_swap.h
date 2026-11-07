@@ -6,7 +6,7 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 14:59:53 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/07 11:45:30 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/07 19:26:24 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int		has_duplicate(const t_stack *a);
 
 /* sort */
 double	disorder_compute(const t_stack *a);
+void	stack_normalize(t_context *ctx);
 void	sort_simple(t_context *ctx);
 
 /* stack */
@@ -88,6 +89,7 @@ void	stack_init(t_stack *stack);
 int		stack_is_sorted(t_stack *stack);
 size_t	stack_min_pos(const t_stack *stack);
 size_t	stack_max_pos(const t_stack *stack);
+void	move_to_top(t_context *ctx, size_t pos, t_op rot, t_op rev);
 void	stack_append(t_stack *stack, t_node *node);
 void	stack_clear(t_stack *stack);
 int		op_buffer_add(t_context *ctx, t_op op);
