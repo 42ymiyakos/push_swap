@@ -6,34 +6,11 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 15:05:55 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/07 11:45:41 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/07 17:32:18 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	move_min_to_top(t_context *ctx)
-{
-	size_t	pos;
-
-	pos = stack_min_pos(&ctx->a);
-	if (pos <= ctx->a.size / 2)
-	{
-		while (pos > 0)
-		{
-			execute_op(ctx, RA);
-			--pos;
-		}
-	}
-	else
-	{
-		while (pos < ctx->a.size)
-		{
-			execute_op(ctx, RRA);
-			++pos;
-		}
-	}
-}
 
 static void	sort_three(t_context *ctx)
 {
@@ -59,7 +36,7 @@ void	sort_simple(t_context *ctx)
 	}
 	while (ctx->a.size > 3)
 	{
-		move_min_to_top(ctx);
+		move_to_top(ctx, stack_min_pos(&ctx->a), RA, RRA);
 		execute_op(ctx, PB);
 	}
 	sort_three(ctx);
