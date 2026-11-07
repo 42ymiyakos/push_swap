@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arendo <arendo@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:55:48 by arendo            #+#    #+#             */
-/*   Updated: 2026/11/04 16:17:33 by arendo           ###   ########.fr       */
+/*   Updated: 2026/11/07 12:29:17 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,50 @@ int	stack_is_sorted(t_stack *stack)
 	return (1);
 }
 
+size_t	stack_min_pos(const t_stack *stack)
+{
+	const t_node	*cur;
+	size_t			i;
+	size_t			pos;
+	int				min;
+
+	cur = stack->head->next;
+	min = stack->head->value;
+	i = 1;
+	pos = 0;
+	while (cur)
+	{
+		if (cur->value < min)
+		{
+			min = cur->value;
+			pos = i;
+		}
+		cur = cur->next;
+		++i;
+	}
+	return (pos);
+}
+
+size_t	stack_max_pos(const t_stack *stack)
+{
+	const t_node	*cur;
+	size_t			i;
+	size_t			pos;
+	int				max;
+
+	cur = stack->head->next;
+	max = stack->head->value;
+	i = 1;
+	pos = 0;
+	while (cur)
+	{
+		if (cur->value > max)
+		{
+			max = cur->value;
+			pos = i;
+		}
+		cur = cur->next;
+		++i;
+	}
+	return (pos);
+}
