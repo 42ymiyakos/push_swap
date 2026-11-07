@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arendo <arendo@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:55:48 by arendo            #+#    #+#             */
-/*   Updated: 2026/11/04 16:17:33 by arendo           ###   ########.fr       */
+/*   Updated: 2026/11/07 11:57:52 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,3 @@ int	stack_is_sorted(t_stack *stack)
 	}
 	return (1);
 }
-

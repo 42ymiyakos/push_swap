@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/05 14:59:53 by ymiyakos          #+#    #+#             */
+/*   Updated: 2026/11/07 11:45:30 by ymiyakos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -68,6 +80,7 @@ int		has_duplicate(const t_stack *a);
 
 /* sort */
 double	disorder_compute(const t_stack *a);
+void	sort_simple(t_context *ctx);
 
 /* stack */
 t_node	*node_new(int value);

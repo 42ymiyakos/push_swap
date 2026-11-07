@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arendo <arendo@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 16:24:37 by arendo            #+#    #+#             */
-/*   Updated: 2026/11/04 16:45:32 by arendo           ###   ########.fr       */
+/*   Updated: 2026/11/07 11:58:21 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	stack_init(t_stack *stack)
 {
 	if (!stack)
-		return;
+		return ;
 	stack->head = NULL;
 	stack->tail = NULL;
 	stack->size = 0;
