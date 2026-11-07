@@ -6,11 +6,9 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 16:38:00 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/03 15:35:22 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/07 18:07:18 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// libft の ft_split ("3 2 1" 形式の引数を分割)
 
 #include "push_swap.h"
 #include <stdlib.h>

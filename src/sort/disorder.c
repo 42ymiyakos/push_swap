@@ -6,13 +6,12 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 17:40:00 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/04 19:43:45 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/07 13:42:24 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// 初期状態の乱雑度 (逆順ペア数 / 全ペア数) を計算
 double	disorder_compute(const t_stack *a)
 {
 	const t_node	*cur;
