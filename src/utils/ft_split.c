@@ -6,12 +6,11 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 16:38:00 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/07 18:07:18 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/09 02:19:34 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
 
 static size_t	words_count(char const *s, char c)
 {
@@ -52,21 +51,6 @@ static char	*word_dup(char const *s, char c)
 	return (word);
 }
 
-void	split_free(char **ss)
-{
-	size_t	i;
-
-	if (ss == NULL)
-		return ;
-	i = 0;
-	while (ss[i] != NULL)
-	{
-		free(ss[i]);
-		++i;
-	}
-	free(ss);
-}
-
 static int	words_fill(char const *s, char c, char **ss)
 {
 	size_t	i;
@@ -105,4 +89,19 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	}
 	return (ss);
+}
+
+void	split_free(char **ss)
+{
+	size_t	i;
+
+	if (ss == NULL)
+		return ;
+	i = 0;
+	while (ss[i] != NULL)
+	{
+		free(ss[i]);
+		++i;
+	}
+	free(ss);
 }
