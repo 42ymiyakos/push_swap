@@ -66,7 +66,7 @@ static void	apply_rotation(t_context *ctx, t_rotation rotation)
 	i = 0;
 	while (i < rotation.count)
 	{
-		execute_op(ctx, rotation.op);
+		op_execute(ctx, rotation.op);
 		i++;
 	}
 }

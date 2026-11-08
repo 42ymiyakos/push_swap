@@ -33,13 +33,13 @@ static void	sort_by_bit(t_context *ctx, size_t bit_index, size_t size)
 	while (i < size)
 	{
 		if ((ctx->a.head->value >> bit_index) & 1)
-			execute_op(ctx, RA);
+			op_execute(ctx, RA);
 		else
-			execute_op(ctx, PB);
+			op_execute(ctx, PB);
 		i++;
 	}
 	while (ctx->b.size)
-		execute_op(ctx, PA);
+		op_execute(ctx, PA);
 }
 
 void	sort_complex(t_context *ctx)

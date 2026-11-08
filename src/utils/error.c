@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void	context_clear(t_context *ctx)
+void	ctx_clear(t_context *ctx)
 {
 	stack_clear(&ctx->a);
 	stack_clear(&ctx->b);
@@ -24,7 +24,7 @@ void	context_clear(t_context *ctx)
 
 void	error_exit(t_context *ctx)
 {
-	context_clear(ctx);
+	ctx_clear(ctx);
 	write(2, "Error\n", 6);
 	exit(1);
 }
