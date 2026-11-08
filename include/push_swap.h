@@ -6,7 +6,7 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 14:59:53 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/08 16:48:21 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/08 17:29:31 by arendo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <unistd.h>
 
 # define OPS_INIT_CAP 256
+# define DISORDER_LOW 0.2
+# define DISORDER_HIGH 0.5
 
 typedef struct s_node
 {
@@ -57,6 +59,13 @@ typedef enum e_op
 	OP_COUNT
 }	t_op;
 
+typedef struct s_rotation
+{
+	t_op	op;
+	size_t	count;
+	int		possible;
+}	t_rotation;
+
 typedef struct s_context
 {
 	t_stack		a;
@@ -80,6 +89,9 @@ int		stack_has_duplicate(const t_stack *a);
 
 /* sort */
 double	disorder_compute(const t_stack *a);
+void	sort_complex(t_context *ctx);
+void	sort_dispatch(t_context *ctx);
+void	sort_adaptive(t_context *ctx);
 void	stack_normalize(t_context *ctx);
 void	sort_simple(t_context *ctx);
 void	sort_medium(t_context *ctx);
@@ -100,6 +112,7 @@ void	stack_rotate(t_stack *stack);
 void	stack_rev_rotate(t_stack *stack);
 int		op_apply(t_op op, t_stack *a, t_stack *b);
 void	op_execute(t_context *ctx, t_op op);
+void	op_buffer_flush(t_context *ctx);
 
 /* bench */
 
