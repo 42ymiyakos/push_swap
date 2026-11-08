@@ -6,7 +6,7 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 19:01:22 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/03 14:48:08 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/07 11:43:10 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ int	parse_number(const char *s, int *out)
 	}
 	if (*s != '\0')
 		return (0);
-	*out = result * sign;
+	*out = (int)(result * sign);
 	return (1);
 }

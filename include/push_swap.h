@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/05 14:59:53 by ymiyakos          #+#    #+#             */
+/*   Updated: 2026/11/08 13:49:53 by arendo           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -80,11 +92,14 @@ double	disorder_compute(const t_stack *a);
 void	sort_complex(t_context *ctx);
 void	sort_dispatch(t_context *ctx);
 void	sort_adaptive(t_context *ctx);
+void	sort_simple(t_context *ctx);
 
 /* stack */
 t_node	*node_new(int value);
 void	stack_init(t_stack *stack);
 int		stack_is_sorted(t_stack *stack);
+size_t	stack_min_pos(const t_stack *stack);
+size_t	stack_max_pos(const t_stack *stack);
 void	stack_append(t_stack *stack, t_node *node);
 void	stack_clear(t_stack *stack);
 int		op_buffer_add(t_context *ctx, t_op op);
