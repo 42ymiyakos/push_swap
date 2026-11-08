@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arendo <arendo@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 14:16:18 by arendo            #+#    #+#             */
-/*   Updated: 2026/11/07 14:16:18 by arendo           ###   ########.fr       */
+/*   Updated: 2026/11/08 20:42:58 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	sort_complex(t_context *ctx)
 	size_t	size;
 	size_t	max_bits;
 
-	if (ctx->a.size < 2)
+	if (stack_is_sorted(&ctx->a))
 		return ;
 	bit_index = 0;
 	max_bits = get_max_bits(ctx->a.size - 1);

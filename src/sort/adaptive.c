@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arendo <arendo@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 18:32:03 by arendo            #+#    #+#             */
-/*   Updated: 2026/11/07 18:32:03 by arendo           ###   ########.fr       */
+/*   Updated: 2026/11/08 20:44:24 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	sort_adaptive(t_context *ctx)
 		apply_rotation(ctx, rotation);
 		return ;
 	}
-	if (ctx->disorder < DISORDER_LOW)
+	if (ctx->disorder < DISORDER_LOW || ctx->a.size <= 5)
 		sort_simple(ctx);
 	else if (ctx->disorder < DISORDER_HIGH)
 		sort_medium(ctx);
