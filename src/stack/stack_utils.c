@@ -82,7 +82,7 @@ size_t	stack_max_pos(const t_stack *stack)
 	return (pos);
 }
 
-void	move_to_top(t_context *ctx, size_t pos, t_op rot, t_op rev)
+void	stack_move_to_top(t_context *ctx, size_t pos, t_op rot, t_op rev)
 {
 	t_stack	*s;
 
@@ -94,7 +94,7 @@ void	move_to_top(t_context *ctx, size_t pos, t_op rot, t_op rev)
 	{
 		while (pos > 0)
 		{
-			execute_op(ctx, rot);
+			op_execute(ctx, rot);
 			--pos;
 		}
 	}
@@ -102,7 +102,7 @@ void	move_to_top(t_context *ctx, size_t pos, t_op rot, t_op rev)
 	{
 		while (pos < s->size)
 		{
-			execute_op(ctx, rev);
+			op_execute(ctx, rev);
 			++pos;
 		}
 	}

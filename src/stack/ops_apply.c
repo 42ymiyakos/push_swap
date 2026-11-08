@@ -15,36 +15,36 @@
 static void	swap_apply(t_op op, t_stack *a, t_stack *b)
 {
 	if (op == SA || op == SS)
-		swap_stack(a);
+		stack_swap(a);
 	if (op == SB || op == SS)
-		swap_stack(b);
+		stack_swap(b);
 }
 
 static void	push_apply(t_op op, t_stack *a, t_stack *b)
 {
 	if (op == PA)
-		push_stack(a, b);
+		stack_push(a, b);
 	else
-		push_stack(b, a);
+		stack_push(b, a);
 }
 
 static void	rotate_apply(t_op op, t_stack *a, t_stack *b)
 {
 	if (op == RA || op == RR)
-		rotate_stack(a);
+		stack_rotate(a);
 	if (op == RB || op == RR)
-		rotate_stack(b);
+		stack_rotate(b);
 }
 
 static void	rev_rotate_apply(t_op op, t_stack *a, t_stack *b)
 {
 	if (op == RRA || op == RRR)
-		rev_rotate_stack(a);
+		stack_rev_rotate(a);
 	if (op == RRB || op == RRR)
-		rev_rotate_stack(b);
+		stack_rev_rotate(b);
 }
 
-int	apply_op(t_op op, t_stack *a, t_stack *b)
+int	op_apply(t_op op, t_stack *a, t_stack *b)
 {
 	if (!a || !b)
 		return (0);

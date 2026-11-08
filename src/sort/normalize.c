@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	compute_ranks(t_context *ctx, int *ranks)
+static void	ranks_compute(t_context *ctx, int *ranks)
 {
 	t_node	*cur;
 	t_node	*other;
@@ -37,7 +37,7 @@ static void	compute_ranks(t_context *ctx, int *ranks)
 	}
 }
 
-static void	apply_ranks(t_context *ctx, int *ranks)
+static void	ranks_apply(t_context *ctx, int *ranks)
 {
 	t_node	*cur;
 	size_t	i;
@@ -61,7 +61,7 @@ void	stack_normalize(t_context *ctx)
 	ranks = malloc(ctx->a.size * sizeof(*ranks));
 	if (!ranks)
 		error_exit(ctx);
-	compute_ranks(ctx, ranks);
-	apply_ranks(ctx, ranks);
+	ranks_compute(ctx, ranks);
+	ranks_apply(ctx, ranks);
 	free(ranks);
 }

@@ -13,7 +13,7 @@
 #include "push_swap.h"
 #include <stdlib.h>
 
-static size_t	count_words(char const *s, char c)
+static size_t	words_count(char const *s, char c)
 {
 	size_t	count;
 
@@ -30,7 +30,7 @@ static size_t	count_words(char const *s, char c)
 	return (count);
 }
 
-static char	*dup_word(char const *s, char c)
+static char	*word_dup(char const *s, char c)
 {
 	char	*word;
 	size_t	len;
@@ -52,7 +52,7 @@ static char	*dup_word(char const *s, char c)
 	return (word);
 }
 
-void	free_split(char **ss)
+void	split_free(char **ss)
 {
 	size_t	i;
 
@@ -67,7 +67,7 @@ void	free_split(char **ss)
 	free(ss);
 }
 
-static int	fill_words(char const *s, char c, char **ss)
+static int	words_fill(char const *s, char c, char **ss)
 {
 	size_t	i;
 
@@ -78,7 +78,7 @@ static int	fill_words(char const *s, char c, char **ss)
 			++s;
 		if (*s)
 		{
-			ss[i] = dup_word(s, c);
+			ss[i] = word_dup(s, c);
 			if (ss[i] == NULL)
 				return (0);
 			++i;
@@ -96,12 +96,12 @@ char	**ft_split(char const *s, char c)
 
 	if (s == NULL)
 		return (NULL);
-	ss = malloc((count_words(s, c) + 1) * sizeof(*ss));
+	ss = malloc((words_count(s, c) + 1) * sizeof(*ss));
 	if (ss == NULL)
 		return (NULL);
-	if (!fill_words(s, c, ss))
+	if (!words_fill(s, c, ss))
 	{
-		free_split(ss);
+		split_free(ss);
 		return (NULL);
 	}
 	return (ss);
