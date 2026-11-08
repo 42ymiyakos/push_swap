@@ -26,9 +26,11 @@ SRCS		= main.c \
 			  sort/adaptive.c \
 			  sort/complex.c \
 			  sort/disorder.c \
+			  sort/dispatch.c \
 			  sort/medium.c \
 			  sort/normalize.c \
 			  sort/simple.c \
+			  sort/sort_utils.c \
 			  utils/error.c \
 			  utils/ft_split.c \
 			  utils/ft_strcmp.c

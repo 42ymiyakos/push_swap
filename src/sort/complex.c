@@ -6,15 +6,15 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 14:16:18 by arendo            #+#    #+#             */
-/*   Updated: 2026/11/08 20:42:58 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/09 02:12:16 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_max_bits(int max_value)
+static size_t	max_bits_compute(size_t max_value)
 {
-	int	bits;
+	size_t	bits;
 
 	bits = 0;
 	while (max_value)
@@ -25,12 +25,12 @@ static int	get_max_bits(int max_value)
 	return (bits);
 }
 
-static void	sort_by_bit(t_context *ctx, size_t bit_index, size_t size)
+static void	sort_by_bit(t_context *ctx, size_t bit_index, size_t total)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < size)
+	while (i < total)
 	{
 		if ((ctx->a.head->value >> bit_index) & 1)
 			op_execute(ctx, RA);
@@ -45,17 +45,17 @@ static void	sort_by_bit(t_context *ctx, size_t bit_index, size_t size)
 void	sort_complex(t_context *ctx)
 {
 	size_t	bit_index;
-	size_t	size;
+	size_t	total;
 	size_t	max_bits;
 
 	if (stack_is_sorted(&ctx->a))
 		return ;
 	bit_index = 0;
-	max_bits = get_max_bits(ctx->a.size - 1);
-	size = ctx->a.size;
+	max_bits = max_bits_compute(ctx->a.size - 1);
+	total = ctx->a.size;
 	while (bit_index < max_bits)
 	{
-		sort_by_bit(ctx, bit_index, size);
+		sort_by_bit(ctx, bit_index, total);
 		bit_index++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 13:06:34 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/08 16:47:29 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/09 02:21:02 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,25 @@ static size_t	chunk_size(size_t n)
 	return (k);
 }
 
-static void	chunks_push(t_context *ctx, size_t k)
+static void	chunks_push(t_context *ctx, size_t width)
 {
-	size_t	i;
-	size_t	top;
+	size_t	pushed;
+	size_t	rank;
 
-	i = 0;
+	pushed = 0;
 	while (ctx->a.size)
 	{
-		top = (size_t)ctx->a.head->value;
-		if (top <= i)
+		rank = (size_t)ctx->a.head->value;
+		if (rank <= pushed)
 		{
 			op_execute(ctx, PB);
 			op_execute(ctx, RB);
-			++i;
+			++pushed;
 		}
-		else if (top <= i + k)
+		else if (rank <= pushed + width)
 		{
 			op_execute(ctx, PB);
-			++i;
+			++pushed;
 		}
 		else
 			op_execute(ctx, RA);
@@ -54,7 +54,7 @@ static void	chunks_push_back(t_context *ctx)
 	while (ctx->b.size)
 	{
 		max_pos = stack_max_pos(&ctx->b);
-		stack_move_to_top(ctx, max_pos, RB, RRB);
+		stack_move_to_top(ctx, &ctx->b, max_pos);
 		op_execute(ctx, PA);
 	}
 }

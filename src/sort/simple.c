@@ -6,7 +6,7 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 15:05:55 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/07 17:32:18 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/09 02:21:33 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	sort_simple(t_context *ctx)
 	}
 	while (ctx->a.size > 3)
 	{
-		stack_move_to_top(ctx, stack_min_pos(&ctx->a), RA, RRA);
+		stack_move_to_top(ctx, &ctx->a, stack_min_pos(&ctx->a));
 		op_execute(ctx, PB);
 	}
 	sort_three(ctx);

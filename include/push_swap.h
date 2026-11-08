@@ -100,7 +100,6 @@ void	stack_rev_rotate(t_stack *stack);
 int		stack_is_sorted(const t_stack *stack);
 size_t	stack_min_pos(const t_stack *stack);
 size_t	stack_max_pos(const t_stack *stack);
-void	stack_move_to_top(t_context *ctx, size_t pos, t_op rot, t_op rev);
 
 /* ops */
 int		op_apply(t_op op, t_stack *a, t_stack *b);
@@ -114,8 +113,9 @@ void	sort_adaptive(t_context *ctx);
 void	sort_simple(t_context *ctx);
 void	sort_medium(t_context *ctx);
 void	sort_complex(t_context *ctx);
-double	disorder_compute(const t_stack *a);
+double	disorder_compute(const t_stack *stack);
 void	stack_normalize(t_context *ctx);
+void	stack_move_to_top(t_context *ctx, t_stack *stack, size_t pos);
 
 /* bench */
 
