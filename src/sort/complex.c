@@ -42,7 +42,7 @@ static void	sort_by_bit(t_context *ctx, size_t bit_index, size_t size)
 		execute_op(ctx, PA);
 }
 
-void	complex_sort(t_context *ctx)
+void	sort_complex(t_context *ctx)
 {
 	size_t	bit_index;
 	size_t	size;

@@ -71,7 +71,7 @@ static void	apply_rotation(t_context *ctx, t_rotation rotation)
 	}
 }
 
-void	adaptive_sort(t_context *ctx)
+void	sort_adaptive(t_context *ctx)
 {
 	t_rotation	rotation;
 
@@ -84,11 +84,11 @@ void	adaptive_sort(t_context *ctx)
 		return ;
 	}
 	if (ctx->disorder < DISORDER_LOW)
-		simple_sort(ctx);
+		sort_simple(ctx);
 	else if (ctx->disorder < DISORDER_HIGH)
-		medium_sort(ctx);
+		sort_medium(ctx);
 	else
-		complex_sort(ctx);
+		sort_complex(ctx);
 }
 
 void	sort_dispatch(t_context *ctx)
@@ -96,13 +96,13 @@ void	sort_dispatch(t_context *ctx)
 	if (!ctx)
 		return ;
 	ctx->disorder = disorder_compute(&ctx->a);
-	normalize(&ctx->a);
+	stack_normalize(ctx);
 	if (ctx->strategy == SIMPLE)
-		simple_sort(ctx);
+		sort_simple(ctx);
 	else if (ctx->strategy == MEDIUM)
-		medium_sort(ctx);
+		sort_medium(ctx);
 	else if (ctx->strategy == COMPLEX)
-		complex_sort(ctx);
+		sort_complex(ctx);
 	else if (ctx->strategy == ADAPTIVE)
-		adaptive_sort(ctx);
+		sort_adaptive(ctx);
 }

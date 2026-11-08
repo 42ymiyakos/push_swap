@@ -77,9 +77,9 @@ int		has_duplicate(const t_stack *a);
 
 /* sort */
 double	disorder_compute(const t_stack *a);
-void	complex_sort(t_context *ctx);
+void	sort_complex(t_context *ctx);
 void	sort_dispatch(t_context *ctx);
-void	adaptive_sort(t_context *ctx);
+void	sort_adaptive(t_context *ctx);
 
 /* stack */
 t_node	*node_new(int value);
