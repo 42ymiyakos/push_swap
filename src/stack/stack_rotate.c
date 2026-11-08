@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ops_push.c                                         :+:      :+:    :+:   */
+/*   stack_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arendo <arendo@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/03 16:46:36 by arendo            #+#    #+#             */
-/*   Updated: 2026/11/03 18:48:23 by arendo           ###   ########.fr       */
+/*   Created: 2026/11/03 18:57:23 by arendo            #+#    #+#             */
+/*   Updated: 2026/11/04 15:48:14 by arendo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_push(t_stack *dst, t_stack *src)
+void	stack_rotate(t_stack *stack)
 {
 	t_node	*move;
 
-	if (!dst || !src || !src->size)
+	if (!stack || stack->size < 2)
 		return ;
-	move = src->head;
-	src->head = move->next;
-	if (src->head)
-		move->next->prev = NULL;
-	else
-		src->tail = NULL;
-	src->size--;
-	if (!dst->size)
-	{
-		dst->tail = move;
-		move->next = NULL;
-	}
-	else
-	{
-		dst->head->prev = move;
-		move->next = dst->head;
-	}
-	dst->head = move;
-	dst->size++;
+	move = stack->head;
+	stack->head = move->next;
+	stack->head->prev = NULL;
+	stack->tail->next = move;
+	move->prev = stack->tail;
+	stack->tail = move;
+	move->next = NULL;
 }

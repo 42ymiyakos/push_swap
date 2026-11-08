@@ -97,7 +97,7 @@ void	stack_swap(t_stack *stack);
 void	stack_push(t_stack *dst, t_stack *src);
 void	stack_rotate(t_stack *stack);
 void	stack_rev_rotate(t_stack *stack);
-int		stack_is_sorted(t_stack *stack);
+int		stack_is_sorted(const t_stack *stack);
 size_t	stack_min_pos(const t_stack *stack);
 size_t	stack_max_pos(const t_stack *stack);
 void	stack_move_to_top(t_context *ctx, size_t pos, t_op rot, t_op rev);

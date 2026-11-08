@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   stack_query.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:55:48 by arendo            #+#    #+#             */
-/*   Updated: 2026/11/07 19:31:18 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/09 02:38:38 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	stack_is_sorted(t_stack *stack)
+int	stack_is_sorted(const t_stack *stack)
 {
-	t_node	*cur;
+	const t_node	*cur;
 
 	if (!stack)
 		return (0);

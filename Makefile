@@ -17,13 +17,12 @@ SRCS		= main.c \
 			  stack/ops_buffer.c \
 			  stack/ops_execute.c \
 			  stack/ops_flush.c \
-			  stack/ops_push.c \
-			  stack/ops_rev_rotate.c \
-			  stack/ops_rotate.c \
-			  stack/ops_swap.c \
-			  stack/stack.c \
-			  stack/stack_init.c \
-			  stack/stack_utils.c \
+			  stack/stack_lifecycle.c \
+			  stack/stack_push.c \
+			  stack/stack_query.c \
+			  stack/stack_rev_rotate.c \
+			  stack/stack_rotate.c \
+			  stack/stack_swap.c \
 			  sort/adaptive.c \
 			  sort/complex.c \
 			  sort/disorder.c \
