@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
+/*   duplicate_check.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-int	stack_has_duplicate(const t_stack *a)
+int	stack_has_duplicate(const t_stack *stack)
 {
 	const t_node	*cur;
 	const t_node	*other;
 
-	cur = a->head;
+	cur = stack->head;
 	while (cur)
 	{
 		other = cur->next;

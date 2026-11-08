@@ -86,7 +86,7 @@ void	ctx_clear(t_context *ctx);
 /* parser */
 void	parse_args(int argc, char **argv, t_context *ctx);
 int		parse_number(const char *s, int *out);
-int		stack_has_duplicate(const t_stack *a);
+int		stack_has_duplicate(const t_stack *stack);
 
 /* stack */
 t_node	*node_new(int value);

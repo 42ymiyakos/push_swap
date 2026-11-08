@@ -10,9 +10,9 @@ OBJ_DIR		= obj
 SRCS		= main.c \
 			  bench/print_bench.c \
 			  context/context.c \
+			  parser/duplicate_check.c \
 			  parser/parse_args.c \
 			  parser/parse_number.c \
-			  parser/validate.c \
 			  stack/stack_lifecycle.c \
 			  stack/stack_push.c \
 			  stack/stack_query.c \
