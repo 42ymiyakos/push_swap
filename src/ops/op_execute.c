@@ -18,4 +18,5 @@ void	op_execute(t_context *ctx, t_op op)
 		error_exit(ctx);
 	if (!op_buffer_add(ctx, op))
 		error_exit(ctx);
+	ctx->counts[op]++;
 }
