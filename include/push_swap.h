@@ -6,6 +6,8 @@
 # include <unistd.h>
 
 # define OPS_INIT_CAP 256
+# define DISORDER_LOW 0.2
+# define DISORDER_HIGH 0.5
 
 typedef struct s_node
 {
@@ -45,6 +47,13 @@ typedef enum e_op
 	OP_COUNT
 }	t_op;
 
+typedef struct s_rotation
+{
+	t_op	op;
+	size_t	count;
+	int		possible;
+}	t_rotation;
+
 typedef struct s_context
 {
 	t_stack		a;
@@ -68,6 +77,9 @@ int		has_duplicate(const t_stack *a);
 
 /* sort */
 double	disorder_compute(const t_stack *a);
+void	complex_sort(t_context *ctx);
+void	sort_dispatch(t_context *ctx);
+void	adaptive_sort(t_context *ctx);
 
 /* stack */
 t_node	*node_new(int value);
