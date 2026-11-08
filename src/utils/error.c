@@ -14,14 +14,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void	ctx_clear(t_context *ctx)
-{
-	stack_clear(&ctx->a);
-	stack_clear(&ctx->b);
-	free(ctx->ops);
-	ctx->ops = NULL;
-}
-
 void	error_exit(t_context *ctx)
 {
 	ctx_clear(ctx);

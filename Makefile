@@ -9,7 +9,7 @@ OBJ_DIR		= obj
 
 SRCS		= main.c \
 			  bench/print_bench.c \
-			  context/ctx_init.c \
+			  context/context.c \
 			  parser/parse_args.c \
 			  parser/parse_number.c \
 			  parser/validate.c \
