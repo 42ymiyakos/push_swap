@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	has_duplicate(const t_stack *a)
+int	stack_has_duplicate(const t_stack *a)
 {
 	const t_node	*cur;
 	const t_node	*other;

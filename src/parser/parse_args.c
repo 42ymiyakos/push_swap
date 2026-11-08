@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	apply_flag(const char *arg, t_context *ctx)
+static int	flag_apply(const char *arg, t_context *ctx)
 {
 	if (ft_strcmp(arg, "--simple") == 0)
 		ctx->strategy = SIMPLE;
@@ -31,11 +31,11 @@ static int	apply_flag(const char *arg, t_context *ctx)
 
 static void	split_error(char **nums, t_context *ctx)
 {
-	free_split(nums);
+	split_free(nums);
 	error_exit(ctx);
 }
 
-static void	add_numbers(const char *arg, t_context *ctx)
+static void	numbers_add(const char *arg, t_context *ctx)
 {
 	char	**nums;
 	t_node	*node;
@@ -56,7 +56,7 @@ static void	add_numbers(const char *arg, t_context *ctx)
 		stack_append(&ctx->a, node);
 		++i;
 	}
-	free_split(nums);
+	split_free(nums);
 }
 
 void	parse_args(int argc, char **argv, t_context *ctx)
@@ -66,10 +66,10 @@ void	parse_args(int argc, char **argv, t_context *ctx)
 	i = 1;
 	while (i < argc)
 	{
-		if (!apply_flag(argv[i], ctx))
-			add_numbers(argv[i], ctx);
+		if (!flag_apply(argv[i], ctx))
+			numbers_add(argv[i], ctx);
 		++i;
 	}
-	if (has_duplicate(&ctx->a))
+	if (stack_has_duplicate(&ctx->a))
 		error_exit(ctx);
 }
