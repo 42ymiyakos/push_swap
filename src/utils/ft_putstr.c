@@ -6,7 +6,7 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/16 11:19:29 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/09 18:54:39 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/09 19:15:26 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ static size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-void	ft_putstr_fd(const char *s, int fd)
+void	ft_putstr_fd(t_context *ctx, const char *s, int fd)
 {
 	if (s == NULL)
 		return ;
-	write(fd, s, ft_strlen(s));
+	if (write(fd, s, ft_strlen(s)) < 0)
+		error_exit(ctx);
 }

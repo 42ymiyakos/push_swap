@@ -12,49 +12,49 @@
 
 #include "push_swap.h"
 
-static void	print_disorder(double disorder, int fd)
+static void	print_disorder(t_context *ctx, double disorder, int fd)
 {
 	size_t	disorder_fmt;
 
-	ft_putstr_fd("[bench] disorder: ", fd);
+	ft_putstr_fd(ctx, "[bench] disorder: ", fd);
 	disorder_fmt = (size_t)(disorder * 10000);
-	ft_putsize_fd(disorder_fmt / 100, fd);
-	ft_putstr_fd(".", fd);
+	ft_putsize_fd(ctx, disorder_fmt / 100, fd);
+	ft_putstr_fd(ctx, ".", fd);
 	if (disorder_fmt % 100 < 10)
-		ft_putstr_fd("0", fd);
-	ft_putsize_fd(disorder_fmt % 100, fd);
-	ft_putstr_fd("%\n", fd);
+		ft_putstr_fd(ctx, "0", fd);
+	ft_putsize_fd(ctx, disorder_fmt % 100, fd);
+	ft_putstr_fd(ctx, "%\n", fd);
 }
 
-static void	print_strategy(const t_context *ctx, t_strategy strategy, int fd)
+static void	print_strategy(t_context *ctx, t_strategy strategy, int fd)
 {
-	ft_putstr_fd("[bench] strategy: ", fd);
+	ft_putstr_fd(ctx, "[bench] strategy: ", fd);
 	if (strategy == SIMPLE)
-		ft_putstr_fd("Simple / O(n^2)\n", fd);
+		ft_putstr_fd(ctx, "Simple / O(n^2)\n", fd);
 	else if (strategy == MEDIUM)
-		ft_putstr_fd("Medium / O(n√n)\n", fd);
+		ft_putstr_fd(ctx, "Medium / O(n√n)\n", fd);
 	else if (strategy == COMPLEX)
-		ft_putstr_fd("Complex / O(n log n)\n", fd);
+		ft_putstr_fd(ctx, "Complex / O(n log n)\n", fd);
 	else
 	{
-		ft_putstr_fd("Adaptive / ", fd);
+		ft_putstr_fd(ctx, "Adaptive / ", fd);
 		if (ctx->disorder < DISORDER_LOW || ctx->a.size <= 5)
-			ft_putstr_fd("O(n^2)\n", fd);
+			ft_putstr_fd(ctx, "O(n^2)\n", fd);
 		else if (ctx->disorder < DISORDER_HIGH)
-			ft_putstr_fd("O(n√n)\n", fd);
+			ft_putstr_fd(ctx, "O(n√n)\n", fd);
 		else
-			ft_putstr_fd("O(n log n)\n", fd);
+			ft_putstr_fd(ctx, "O(n log n)\n", fd);
 	}
 }
 
-static void	print_total_ops(size_t ops_len, int fd)
+static void	print_total_ops(t_context *ctx, size_t ops_len, int fd)
 {
-	ft_putstr_fd("[bench] total_ops: ", fd);
-	ft_putsize_fd(ops_len, fd);
-	ft_putstr_fd("\n", fd);
+	ft_putstr_fd(ctx, "[bench] total_ops: ", fd);
+	ft_putsize_fd(ctx, ops_len, fd);
+	ft_putstr_fd(ctx, "\n", fd);
 }
 
-static void	print_ops(const size_t *counts, int fd)
+static void	print_ops(t_context *ctx, const size_t *counts, int fd)
 {
 	size_t				i;
 	static const char	*name[OP_COUNT] = {
@@ -63,27 +63,27 @@ static void	print_ops(const size_t *counts, int fd)
 		"rra", "rrb", "rrr"
 	};
 
-	ft_putstr_fd("[bench] ", fd);
+	ft_putstr_fd(ctx, "[bench] ", fd);
 	i = 0;
 	while (i < OP_COUNT)
 	{
-		ft_putstr_fd(name[i], fd);
-		ft_putstr_fd(": ", fd);
-		ft_putsize_fd(counts[i], fd);
+		ft_putstr_fd(ctx, name[i], fd);
+		ft_putstr_fd(ctx, ": ", fd);
+		ft_putsize_fd(ctx, counts[i], fd);
 		if (i == PB)
-			ft_putstr_fd("\n[bench] ", fd);
+			ft_putstr_fd(ctx, "\n[bench] ", fd);
 		else if (i == OP_COUNT - 1)
-			ft_putstr_fd("\n", fd);
+			ft_putstr_fd(ctx, "\n", fd);
 		else
-			ft_putstr_fd(" ", fd);
+			ft_putstr_fd(ctx, " ", fd);
 		++i;
 	}
 }
 
-void	print_bench(const t_context *ctx)
+void	print_bench(t_context *ctx)
 {
-	print_disorder(ctx->disorder, 2);
+	print_disorder(ctx, ctx->disorder, 2);
 	print_strategy(ctx, ctx->strategy, 2);
-	print_total_ops(ctx->ops_len, 2);
-	print_ops(ctx->counts, 2);
+	print_total_ops(ctx, ctx->ops_len, 2);
+	print_ops(ctx, ctx->counts, 2);
 }

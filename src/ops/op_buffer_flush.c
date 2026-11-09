@@ -12,42 +12,42 @@
 
 #include "push_swap.h"
 
-static void	swap_print(t_op op)
+static void	swap_print(t_context *ctx, t_op op)
 {
 	if (op == SA)
-		ft_putstr_fd("sa\n", 1);
+		ft_putstr_fd(ctx, "sa\n", 1);
 	else if (op == SB)
-		ft_putstr_fd("sb\n", 1);
+		ft_putstr_fd(ctx, "sb\n", 1);
 	else
-		ft_putstr_fd("ss\n", 1);
+		ft_putstr_fd(ctx, "ss\n", 1);
 }
 
-static void	push_print(t_op op)
+static void	push_print(t_context *ctx, t_op op)
 {
 	if (op == PA)
-		ft_putstr_fd("pa\n", 1);
+		ft_putstr_fd(ctx, "pa\n", 1);
 	else
-		ft_putstr_fd("pb\n", 1);
+		ft_putstr_fd(ctx, "pb\n", 1);
 }
 
-static void	rotate_print(t_op op)
+static void	rotate_print(t_context *ctx, t_op op)
 {
 	if (op == RA)
-		ft_putstr_fd("ra\n", 1);
+		ft_putstr_fd(ctx, "ra\n", 1);
 	else if (op == RB)
-		ft_putstr_fd("rb\n", 1);
+		ft_putstr_fd(ctx, "rb\n", 1);
 	else
-		ft_putstr_fd("rr\n", 1);
+		ft_putstr_fd(ctx, "rr\n", 1);
 }
 
-static void	rev_rotate_print(t_op op)
+static void	rev_rotate_print(t_context *ctx, t_op op)
 {
 	if (op == RRA)
-		ft_putstr_fd("rra\n", 1);
+		ft_putstr_fd(ctx, "rra\n", 1);
 	else if (op == RRB)
-		ft_putstr_fd("rrb\n", 1);
+		ft_putstr_fd(ctx, "rrb\n", 1);
 	else
-		ft_putstr_fd("rrr\n", 1);
+		ft_putstr_fd(ctx, "rrr\n", 1);
 }
 
 void	op_buffer_flush(t_context *ctx)
@@ -60,13 +60,13 @@ void	op_buffer_flush(t_context *ctx)
 	while (i < ctx->ops_len)
 	{
 		if (ctx->ops[i] <= SS)
-			swap_print(ctx->ops[i]);
+			swap_print(ctx, ctx->ops[i]);
 		else if (ctx->ops[i] <= PB)
-			push_print(ctx->ops[i]);
+			push_print(ctx, ctx->ops[i]);
 		else if (ctx->ops[i] <= RR)
-			rotate_print(ctx->ops[i]);
+			rotate_print(ctx, ctx->ops[i]);
 		else
-			rev_rotate_print(ctx->ops[i]);
+			rev_rotate_print(ctx, ctx->ops[i]);
 		i++;
 	}
 }
