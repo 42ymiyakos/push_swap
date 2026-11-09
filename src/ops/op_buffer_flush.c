@@ -15,39 +15,39 @@
 static void	swap_print(t_op op)
 {
 	if (op == SA)
-		write(1, "sa\n", 3);
+		ft_putstr_fd("sa\n", 1);
 	else if (op == SB)
-		write(1, "sb\n", 3);
+		ft_putstr_fd("sb\n", 1);
 	else
-		write(1, "ss\n", 3);
+		ft_putstr_fd("ss\n", 1);
 }
 
 static void	push_print(t_op op)
 {
 	if (op == PA)
-		write(1, "pa\n", 3);
+		ft_putstr_fd("pa\n", 1);
 	else
-		write(1, "pb\n", 3);
+		ft_putstr_fd("pb\n", 1);
 }
 
 static void	rotate_print(t_op op)
 {
 	if (op == RA)
-		write(1, "ra\n", 3);
+		ft_putstr_fd("ra\n", 1);
 	else if (op == RB)
-		write(1, "rb\n", 3);
+		ft_putstr_fd("rb\n", 1);
 	else
-		write(1, "rr\n", 3);
+		ft_putstr_fd("rr\n", 1);
 }
 
 static void	rev_rotate_print(t_op op)
 {
 	if (op == RRA)
-		write(1, "rra\n", 4);
+		ft_putstr_fd("rra\n", 1);
 	else if (op == RRB)
-		write(1, "rrb\n", 4);
+		ft_putstr_fd("rrb\n", 1);
 	else
-		write(1, "rrr\n", 4);
+		ft_putstr_fd("rrr\n", 1);
 }
 
 void	op_buffer_flush(t_context *ctx)
