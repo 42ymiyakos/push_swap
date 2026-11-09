@@ -6,10 +6,11 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 19:01:22 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/07 11:43:10 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/09 01:34:24 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 #include <limits.h>
 
 int	parse_number(const char *s, int *out)

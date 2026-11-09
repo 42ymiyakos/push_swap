@@ -9,27 +9,28 @@ OBJ_DIR		= obj
 
 SRCS		= main.c \
 			  bench/print_bench.c \
-			  context/ctx_init.c \
+			  context/context.c \
+			  parser/duplicate_check.c \
 			  parser/parse_args.c \
 			  parser/parse_number.c \
-			  parser/validate.c \
+			  stack/stack_lifecycle.c \
+			  stack/stack_push.c \
+			  stack/stack_query.c \
+			  stack/stack_rev_rotate.c \
+			  stack/stack_rotate.c \
+			  stack/stack_swap.c \
+			  ops/op_apply.c \
+			  ops/op_buffer.c \
+			  ops/op_buffer_flush.c \
+			  ops/op_execute.c \
 			  sort/adaptive.c \
 			  sort/complex.c \
 			  sort/disorder.c \
+			  sort/dispatch.c \
 			  sort/medium.c \
 			  sort/normalize.c \
 			  sort/simple.c \
-			  stack/ops_apply.c \
-			  stack/ops_push.c \
-			  stack/ops_rev_rotate.c \
-			  stack/ops_rotate.c \
-			  stack/ops_buffer.c \
-			  stack/ops_swap.c \
-			  stack/ops_execute.c \
-			  stack/stack.c \
-			  stack/stack_init.c \
-			  stack/stack_utils.c \
-			  stack/ops_flush.c \
+			  sort/sort_utils.c \
 			  utils/error.c \
 			  utils/ft_split.c \
 			  utils/ft_strcmp.c

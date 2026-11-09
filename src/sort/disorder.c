@@ -12,23 +12,23 @@
 
 #include "push_swap.h"
 
-double	disorder_compute(const t_stack *a)
+double	disorder_compute(const t_stack *stack)
 {
 	const t_node	*cur;
 	const t_node	*other;
 	size_t			total_pairs;
-	size_t			mistake;
+	size_t			inversions;
 
-	cur = a->head;
+	cur = stack->head;
 	total_pairs = 0;
-	mistake = 0;
+	inversions = 0;
 	while (cur)
 	{
 		other = cur->next;
 		while (other)
 		{
 			if (cur->value > other->value)
-				++mistake;
+				++inversions;
 			++total_pairs;
 			other = other->next;
 		}
@@ -36,5 +36,5 @@ double	disorder_compute(const t_stack *a)
 	}
 	if (total_pairs == 0)
 		return ((double)0);
-	return ((double)mistake / (double)total_pairs);
+	return ((double)inversions / (double)total_pairs);
 }

@@ -6,21 +6,11 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 18:31:28 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/03 18:42:05 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/09 02:07:23 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <unistd.h>
-#include <stdlib.h>
-
-void	ctx_clear(t_context *ctx)
-{
-	stack_clear(&ctx->a);
-	stack_clear(&ctx->b);
-	free(ctx->ops);
-	ctx->ops = NULL;
-}
 
 void	error_exit(t_context *ctx)
 {

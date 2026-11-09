@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ops_flush.c                                        :+:      :+:    :+:   */
+/*   op_buffer_flush.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arendo <arendo@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -67,7 +67,6 @@ void	op_buffer_flush(t_context *ctx)
 			rotate_print(ctx->ops[i]);
 		else
 			rev_rotate_print(ctx->ops[i]);
-		ctx->counts[ctx->ops[i]]++;
 		i++;
 	}
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ops_buffer.c                                       :+:      :+:    :+:   */
+/*   op_buffer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arendo <arendo@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	ops_capacity_expand(t_context *ctx)
+static int	op_buffer_expand(t_context *ctx)
 {
 	t_op	*new_ops;
 	size_t	new_cap;
@@ -41,7 +41,7 @@ int	op_buffer_add(t_context *ctx, t_op op)
 {
 	if (!ctx)
 		return (0);
-	if (ctx->ops_len == ctx->ops_cap && !ops_capacity_expand(ctx))
+	if (ctx->ops_len == ctx->ops_cap && !op_buffer_expand(ctx))
 		return (0);
 	ctx->ops[ctx->ops_len] = op;
 	ctx->ops_len++;

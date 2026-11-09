@@ -12,33 +12,33 @@
 
 #include "push_swap.h"
 
-static size_t	find_rotation_index(t_stack *stack, size_t *drops)
+static size_t	rotation_index_find(t_stack *stack, size_t *drops)
 {
-	t_node	*node;
+	t_node	*cur;
 	size_t	i;
-	size_t	result;
+	size_t	start;
 
-	node = stack->head;
+	cur = stack->head;
 	i = 0;
-	result = 0;
+	start = 0;
 	*drops = 0;
-	while (node->next)
+	while (cur->next)
 	{
-		if (node->value > node->next->value)
+		if (cur->value > cur->next->value)
 		{
 			(*drops)++;
-			result = i + 1;
+			start = i + 1;
 		}
-		node = node->next;
+		cur = cur->next;
 		i++;
 	}
-	return (result);
+	return (start);
 }
 
-static t_rotation	analyze_rotation(t_stack *stack)
+static t_rotation	rotation_analyze(t_stack *stack)
 {
 	t_rotation	result;
-	size_t		i;
+	size_t		start;
 	size_t		drops;
 
 	result.op = RA;
@@ -46,20 +46,20 @@ static t_rotation	analyze_rotation(t_stack *stack)
 	result.possible = 0;
 	if (!stack || stack->size < 2)
 		return (result);
-	i = find_rotation_index(stack, &drops);
+	start = rotation_index_find(stack, &drops);
 	if (drops != 1 || stack->head->value <= stack->tail->value)
 		return (result);
 	result.possible = 1;
-	result.count = i;
-	if (i > stack->size - i)
+	result.count = start;
+	if (start > stack->size - start)
 	{
 		result.op = RRA;
-		result.count = stack->size - i;
+		result.count = stack->size - start;
 	}
 	return (result);
 }
 
-static void	apply_rotation(t_context *ctx, t_rotation rotation)
+static void	rotation_apply(t_context *ctx, t_rotation rotation)
 {
 	size_t	i;
 
@@ -77,10 +77,10 @@ void	sort_adaptive(t_context *ctx)
 
 	if (!ctx || stack_is_sorted(&ctx->a))
 		return ;
-	rotation = analyze_rotation(&ctx->a);
+	rotation = rotation_analyze(&ctx->a);
 	if (rotation.possible)
 	{
-		apply_rotation(ctx, rotation);
+		rotation_apply(ctx, rotation);
 		return ;
 	}
 	if (ctx->disorder < DISORDER_LOW || ctx->a.size <= 5)
@@ -89,20 +89,4 @@ void	sort_adaptive(t_context *ctx)
 		sort_medium(ctx);
 	else
 		sort_complex(ctx);
-}
-
-void	sort_dispatch(t_context *ctx)
-{
-	if (!ctx)
-		return ;
-	ctx->disorder = disorder_compute(&ctx->a);
-	stack_normalize(ctx);
-	if (ctx->strategy == SIMPLE)
-		sort_simple(ctx);
-	else if (ctx->strategy == MEDIUM)
-		sort_medium(ctx);
-	else if (ctx->strategy == COMPLEX)
-		sort_complex(ctx);
-	else if (ctx->strategy == ADAPTIVE)
-		sort_adaptive(ctx);
 }

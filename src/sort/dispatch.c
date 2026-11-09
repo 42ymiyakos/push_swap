@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init.c                                       :+:      :+:    :+:   */
+/*   dispatch.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/04 16:24:37 by arendo            #+#    #+#             */
-/*   Updated: 2026/11/07 11:58:21 by ymiyakos         ###   ########.fr       */
+/*   Created: 2026/11/07 18:32:03 by arendo            #+#    #+#             */
+/*   Updated: 2026/11/08 20:44:24 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_init(t_stack *stack)
+void	sort_dispatch(t_context *ctx)
 {
-	if (!stack)
+	if (!ctx)
 		return ;
-	stack->head = NULL;
-	stack->tail = NULL;
-	stack->size = 0;
+	ctx->disorder = disorder_compute(&ctx->a);
+	stack_normalize(ctx);
+	if (ctx->strategy == SIMPLE)
+		sort_simple(ctx);
+	else if (ctx->strategy == MEDIUM)
+		sort_medium(ctx);
+	else if (ctx->strategy == COMPLEX)
+		sort_complex(ctx);
+	else if (ctx->strategy == ADAPTIVE)
+		sort_adaptive(ctx);
 }

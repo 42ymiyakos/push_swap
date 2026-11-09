@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ctx_init.c                                         :+:      :+:    :+:   */
+/*   context.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arendo <arendo@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -32,4 +32,12 @@ void	ctx_init(t_context *ctx)
 		ctx->counts[i] = 0;
 		i++;
 	}
+}
+
+void	ctx_clear(t_context *ctx)
+{
+	stack_clear(&ctx->a);
+	stack_clear(&ctx->b);
+	free(ctx->ops);
+	ctx->ops = NULL;
 }
