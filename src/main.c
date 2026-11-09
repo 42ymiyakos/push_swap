@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	ctx_init(&ctx);
-	parse_args(argc, argv, &ctx);
+	parse_args(&ctx, argc, argv);
 	sort_dispatch(&ctx);
 	op_buffer_flush(&ctx);
 	if (ctx.bench)
