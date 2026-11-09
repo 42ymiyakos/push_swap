@@ -6,7 +6,7 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 14:59:53 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/09 02:20:06 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/09 15:33:17 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	ctx_init(t_context *ctx);
 void	ctx_clear(t_context *ctx);
 
 /* parser */
-void	parse_args(int argc, char **argv, t_context *ctx);
+void	parse_args(t_context *ctx, int argc, char **argv);
 int		parse_number(const char *s, int *out);
 int		stack_has_duplicate(const t_stack *stack);
 
@@ -118,11 +118,14 @@ void	stack_normalize(t_context *ctx);
 void	stack_move_to_top(t_context *ctx, t_stack *stack, size_t pos);
 
 /* bench */
+void	print_bench(t_context *ctx);
 
 /* utils */
 void	error_exit(t_context *ctx);
 char	**ft_split(char const *s, char c);
 void	split_free(char **ss);
 int		ft_strcmp(const char *s1, const char *s2);
+void	ft_putsize_fd(t_context *ctx, size_t size, int fd);
+void	ft_putstr_fd(t_context *ctx, const char *s, int fd);
 
 #endif

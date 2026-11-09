@@ -32,6 +32,8 @@ SRCS		= main.c \
 			  sort/simple.c \
 			  sort/sort_utils.c \
 			  utils/error.c \
+			  utils/ft_putsize.c \
+			  utils/ft_putstr.c \
 			  utils/ft_split.c \
 			  utils/ft_strcmp.c
 

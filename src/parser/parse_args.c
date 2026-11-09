@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	flag_apply(const char *arg, t_context *ctx)
+static int	flag_apply(t_context *ctx, const char *arg)
 {
 	if (ft_strcmp(arg, "--simple") == 0)
 		ctx->strategy = SIMPLE;
@@ -29,13 +29,13 @@ static int	flag_apply(const char *arg, t_context *ctx)
 	return (1);
 }
 
-static void	split_error(char **nums, t_context *ctx)
+static void	split_error(t_context *ctx, char **nums)
 {
 	split_free(nums);
 	error_exit(ctx);
 }
 
-static void	numbers_add(const char *arg, t_context *ctx)
+static void	numbers_add(t_context *ctx, const char *arg)
 {
 	char	**nums;
 	t_node	*node;
@@ -44,7 +44,7 @@ static void	numbers_add(const char *arg, t_context *ctx)
 
 	nums = ft_split(arg, ' ');
 	if (!nums || !nums[0])
-		split_error(nums, ctx);
+		split_error(ctx, nums);
 	i = 0;
 	while (nums[i])
 	{
@@ -52,22 +52,22 @@ static void	numbers_add(const char *arg, t_context *ctx)
 		if (parse_number(nums[i], &value))
 			node = node_new(value);
 		if (!node)
-			split_error(nums, ctx);
+			split_error(ctx, nums);
 		stack_append(&ctx->a, node);
 		++i;
 	}
 	split_free(nums);
 }
 
-void	parse_args(int argc, char **argv, t_context *ctx)
+void	parse_args(t_context *ctx, int argc, char **argv)
 {
 	int	i;
 
 	i = 1;
 	while (i < argc)
 	{
-		if (!flag_apply(argv[i], ctx))
-			numbers_add(argv[i], ctx);
+		if (!flag_apply(ctx, argv[i]))
+			numbers_add(ctx, argv[i]);
 		++i;
 	}
 	if (stack_has_duplicate(&ctx->a))
