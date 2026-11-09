@@ -6,7 +6,7 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 18:07:28 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/09 01:34:52 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/09 18:51:50 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	main(int argc, char **argv)
 	parse_args(argc, argv, &ctx);
 	sort_dispatch(&ctx);
 	op_buffer_flush(&ctx);
+	if (ctx.bench)
+		print_bench(&ctx);
 	ctx_clear(&ctx);
 	return (0);
 }
