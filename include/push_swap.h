@@ -6,7 +6,7 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 14:59:53 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/09 15:33:17 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/12 17:44:05 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_context
 	double		disorder;
 	size_t		counts[OP_COUNT];
 	int			bench;
+	int			count_only;
 	t_op		*ops;
 	size_t		ops_len;
 	size_t		ops_cap;
@@ -119,6 +120,9 @@ void	stack_move_to_top(t_context *ctx, t_stack *stack, size_t pos);
 
 /* bench */
 void	print_bench(t_context *ctx);
+
+/* count only */
+void	print_count_only(t_context *ctx);
 
 /* utils */
 void	error_exit(t_context *ctx);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   context.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arendo <arendo@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 16:23:45 by arendo            #+#    #+#             */
-/*   Updated: 2026/11/04 16:41:06 by arendo           ###   ########.fr       */
+/*   Updated: 2026/11/12 17:34:10 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ctx_init(t_context *ctx)
 	ctx->strategy = ADAPTIVE;
 	ctx->disorder = 0;
 	ctx->bench = 0;
+	ctx->count_only = 0;
 	ctx->ops = NULL;
 	ctx->ops_len = 0;
 	ctx->ops_cap = 0;

@@ -9,6 +9,7 @@ OBJ_DIR		= obj
 
 SRCS		= main.c \
 			  bench/print_bench.c \
+			  count/print_count_only.c \
 			  context/context.c \
 			  parser/duplicate_check.c \
 			  parser/parse_args.c \
