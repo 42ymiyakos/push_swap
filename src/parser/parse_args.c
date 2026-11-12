@@ -6,7 +6,7 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 15:20:35 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/05 14:32:17 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/12 17:39:51 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	flag_apply(t_context *ctx, const char *arg)
 		ctx->strategy = ADAPTIVE;
 	else if (ft_strcmp(arg, "--bench") == 0)
 		ctx->bench = 1;
+	else if (ft_strcmp(arg, "--count-only") == 0)
+		ctx->count_only = 1;
 	else
 		return (0);
 	return (1);
