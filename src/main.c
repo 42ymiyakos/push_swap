@@ -20,6 +20,11 @@ int	main(int argc, char **argv)
 		return (0);
 	ctx_init(&ctx);
 	parse_args(&ctx, argc, argv);
+	if (ctx.a.size == 0)
+	{
+		ctx_clear(&ctx);
+		return (0);
+	}
 	sort_dispatch(&ctx);
 	op_buffer_flush(&ctx);
 	if (ctx.bench)
