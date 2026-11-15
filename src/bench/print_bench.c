@@ -6,7 +6,7 @@
 /*   By: ymiyakos <ymiyakos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 14:00:44 by ymiyakos          #+#    #+#             */
-/*   Updated: 2026/11/09 18:53:34 by ymiyakos         ###   ########.fr       */
+/*   Updated: 2026/11/15 11:37:16 by ymiyakos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	print_disorder(t_context *ctx, double disorder, int fd)
 	size_t	disorder_fmt;
 
 	ft_putstr_fd(ctx, "[bench] disorder: ", fd);
-	disorder_fmt = (size_t)(disorder * 10000);
+	disorder_fmt = (size_t)(disorder * 10000 + 0.5);
 	ft_putsize_fd(ctx, disorder_fmt / 100, fd);
 	ft_putstr_fd(ctx, ".", fd);
 	if (disorder_fmt % 100 < 10)
