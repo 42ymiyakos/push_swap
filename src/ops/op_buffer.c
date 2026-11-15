@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdint.h>
 
 static int	op_buffer_expand(t_context *ctx)
 {
@@ -20,9 +21,11 @@ static int	op_buffer_expand(t_context *ctx)
 
 	if (!ctx->ops_cap)
 		new_cap = OPS_INIT_CAP;
+	else if (ctx->ops_cap > SIZE_MAX / 2 / sizeof(t_op))
+		return (0);
 	else
 		new_cap = ctx->ops_cap * 2;
-	new_ops = malloc(sizeof(t_op) * (new_cap));
+	new_ops = malloc(sizeof(t_op) * new_cap);
 	if (!new_ops)
 		return (0);
 	ctx->ops_cap = new_cap;

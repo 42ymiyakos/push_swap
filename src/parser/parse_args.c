@@ -12,16 +12,24 @@
 
 #include "push_swap.h"
 
+static void	strategy_select(t_context *ctx, t_strategy strategy)
+{
+	if (ctx->strategy_given)
+		error_exit(ctx);
+	ctx->strategy = strategy;
+	ctx->strategy_given = 1;
+}
+
 static int	flag_apply(t_context *ctx, const char *arg)
 {
 	if (ft_strcmp(arg, "--simple") == 0)
-		ctx->strategy = SIMPLE;
+		strategy_select(ctx, SIMPLE);
 	else if (ft_strcmp(arg, "--medium") == 0)
-		ctx->strategy = MEDIUM;
+		strategy_select(ctx, MEDIUM);
 	else if (ft_strcmp(arg, "--complex") == 0)
-		ctx->strategy = COMPLEX;
+		strategy_select(ctx, COMPLEX);
 	else if (ft_strcmp(arg, "--adaptive") == 0)
-		ctx->strategy = ADAPTIVE;
+		strategy_select(ctx, ADAPTIVE);
 	else if (ft_strcmp(arg, "--bench") == 0)
 		ctx->bench = 1;
 	else
