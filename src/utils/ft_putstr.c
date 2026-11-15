@@ -24,8 +24,18 @@ static size_t	ft_strlen(const char *s)
 
 void	ft_putstr_fd(t_context *ctx, const char *s, int fd)
 {
+	size_t	len;
+	ssize_t	written;
+
 	if (s == NULL)
 		return ;
-	if (write(fd, s, ft_strlen(s)) < 0)
-		error_exit(ctx);
+	len = ft_strlen(s);
+	while (len > 0)
+	{
+		written = write(fd, s, len);
+		if (written <= 0)
+			error_exit(ctx);
+		s += written;
+		len -= (size_t)written;
+	}
 }

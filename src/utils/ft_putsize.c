@@ -19,6 +19,6 @@ void	ft_putsize_fd(t_context *ctx, size_t size, int fd)
 	if (size >= 10)
 		ft_putsize_fd(ctx, size / 10, fd);
 	c = size % 10 + '0';
-	if (write(fd, &c, 1) < 0)
+	if (write(fd, &c, 1) != 1)
 		error_exit(ctx);
 }
