@@ -21,6 +21,7 @@ void	ctx_init(t_context *ctx)
 	stack_init(&ctx->a);
 	stack_init(&ctx->b);
 	ctx->strategy = ADAPTIVE;
+	ctx->strategy_given = 0;
 	ctx->disorder = 0;
 	ctx->bench = 0;
 	ctx->ops = NULL;
@@ -40,4 +41,6 @@ void	ctx_clear(t_context *ctx)
 	stack_clear(&ctx->b);
 	free(ctx->ops);
 	ctx->ops = NULL;
+	ctx->ops_len = 0;
+	ctx->ops_cap = 0;
 }

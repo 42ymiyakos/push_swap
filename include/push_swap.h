@@ -71,6 +71,7 @@ typedef struct s_context
 	t_stack		a;
 	t_stack		b;
 	t_strategy	strategy;
+	int			strategy_given;
 	double		disorder;
 	size_t		counts[OP_COUNT];
 	int			bench;
