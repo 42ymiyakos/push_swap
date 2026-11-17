@@ -14,12 +14,12 @@
 
 static size_t	chunk_size(size_t n)
 {
-	size_t	k;
+	size_t	width;
 
-	k = 0;
-	while (k * k <= n)
-		++k;
-	return (k);
+	width = 1;
+	while (width <= n / width)
+		++width;
+	return (width);
 }
 
 static void	chunks_push(t_context *ctx, size_t width)
