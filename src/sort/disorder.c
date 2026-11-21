@@ -19,8 +19,9 @@ double	disorder_compute(const t_stack *stack)
 	size_t			total_pairs;
 	size_t			inversions;
 
+	if (stack->size < 2)
+		return ((double)0);
 	cur = stack->head;
-	total_pairs = 0;
 	inversions = 0;
 	while (cur)
 	{
@@ -29,12 +30,10 @@ double	disorder_compute(const t_stack *stack)
 		{
 			if (cur->value > other->value)
 				++inversions;
-			++total_pairs;
 			other = other->next;
 		}
 		cur = cur->next;
 	}
-	if (total_pairs == 0)
-		return ((double)0);
+	total_pairs = stack->size * (stack->size - 1) / 2;
 	return ((double)inversions / (double)total_pairs);
 }

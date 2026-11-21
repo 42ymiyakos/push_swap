@@ -18,12 +18,14 @@ void	sort_dispatch(t_context *ctx)
 		return ;
 	ctx->disorder = disorder_compute(&ctx->a);
 	stack_normalize(ctx);
+	if (stack_is_sorted(&ctx->a))
+		return ;
 	if (ctx->strategy == SIMPLE)
 		sort_simple(ctx);
 	else if (ctx->strategy == MEDIUM)
 		sort_medium(ctx);
 	else if (ctx->strategy == COMPLEX)
 		sort_complex(ctx);
-	else if (ctx->strategy == ADAPTIVE)
+	else
 		sort_adaptive(ctx);
 }

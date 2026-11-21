@@ -12,19 +12,19 @@
 
 #include "push_swap.h"
 
-static void	ranks_compute(t_context *ctx, int *ranks)
+static void	ranks_compute(const t_stack *stack, int *ranks)
 {
-	t_node	*cur;
-	t_node	*other;
-	int		rank;
-	size_t	i;
+	const t_node	*cur;
+	const t_node	*other;
+	int				rank;
+	size_t			i;
 
-	cur = ctx->a.head;
+	cur = stack->head;
 	i = 0;
 	while (cur)
 	{
 		rank = 0;
-		other = ctx->a.head;
+		other = stack->head;
 		while (other)
 		{
 			if (cur->value > other->value)
@@ -37,12 +37,12 @@ static void	ranks_compute(t_context *ctx, int *ranks)
 	}
 }
 
-static void	ranks_apply(t_context *ctx, int *ranks)
+static void	ranks_apply(t_stack *stack, const int *ranks)
 {
 	t_node	*cur;
 	size_t	i;
 
-	cur = ctx->a.head;
+	cur = stack->head;
 	i = 0;
 	while (cur)
 	{
@@ -56,12 +56,10 @@ void	stack_normalize(t_context *ctx)
 {
 	int		*ranks;
 
-	if (ctx->a.size == 0)
-		return ;
 	ranks = malloc(ctx->a.size * sizeof(*ranks));
 	if (!ranks)
 		error_exit(ctx);
-	ranks_compute(ctx, ranks);
-	ranks_apply(ctx, ranks);
+	ranks_compute(&ctx->a, ranks);
+	ranks_apply(&ctx->a, ranks);
 	free(ranks);
 }

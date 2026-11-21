@@ -12,31 +12,18 @@
 
 #include "push_swap.h"
 
-static size_t	max_bits_compute(size_t max_value)
+static void	sort_by_bit(t_context *ctx, size_t bit_index)
 {
-	size_t	bits;
+	size_t	remaining;
 
-	bits = 0;
-	while (max_value)
-	{
-		max_value >>= 1;
-		bits++;
-	}
-	return (bits);
-}
-
-static void	sort_by_bit(t_context *ctx, size_t bit_index, size_t total)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < total)
+	remaining = ctx->a.size;
+	while (remaining)
 	{
 		if ((ctx->a.head->value >> bit_index) & 1)
 			op_execute(ctx, RA);
 		else
 			op_execute(ctx, PB);
-		i++;
+		remaining--;
 	}
 	while (ctx->b.size)
 		op_execute(ctx, PA);
@@ -45,17 +32,11 @@ static void	sort_by_bit(t_context *ctx, size_t bit_index, size_t total)
 void	sort_complex(t_context *ctx)
 {
 	size_t	bit_index;
-	size_t	total;
-	size_t	max_bits;
 
-	if (stack_is_sorted(&ctx->a))
-		return ;
 	bit_index = 0;
-	max_bits = max_bits_compute(ctx->a.size - 1);
-	total = ctx->a.size;
-	while (bit_index < max_bits)
+	while ((ctx->a.size - 1) >> bit_index)
 	{
-		sort_by_bit(ctx, bit_index, total);
+		sort_by_bit(ctx, bit_index);
 		bit_index++;
 	}
 }

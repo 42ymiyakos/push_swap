@@ -27,8 +27,6 @@ static void	sort_three(t_context *ctx)
 
 void	sort_simple(t_context *ctx)
 {
-	if (stack_is_sorted(&ctx->a))
-		return ;
 	if (ctx->a.size == 2)
 	{
 		op_execute(ctx, SA);
