@@ -49,12 +49,9 @@ static void	chunks_push(t_context *ctx, size_t width)
 
 static void	chunks_push_back(t_context *ctx)
 {
-	size_t	max_pos;
-
 	while (ctx->b.size)
 	{
-		max_pos = stack_max_pos(&ctx->b);
-		stack_move_to_top(ctx, &ctx->b, max_pos);
+		stack_move_to_top(ctx, &ctx->b, stack_max_pos(&ctx->b));
 		op_execute(ctx, PA);
 	}
 }

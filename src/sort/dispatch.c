@@ -26,6 +26,6 @@ void	sort_dispatch(t_context *ctx)
 		sort_medium(ctx);
 	else if (ctx->strategy == COMPLEX)
 		sort_complex(ctx);
-	else if (ctx->strategy == ADAPTIVE)
+	else
 		sort_adaptive(ctx);
 }
