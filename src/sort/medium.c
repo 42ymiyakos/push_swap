@@ -61,8 +61,6 @@ static void	chunks_push_back(t_context *ctx)
 
 void	sort_medium(t_context *ctx)
 {
-	if (stack_is_sorted(&ctx->a))
-		return ;
 	chunks_push(ctx, chunk_size(ctx->a.size));
 	chunks_push_back(ctx);
 }

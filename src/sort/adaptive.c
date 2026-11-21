@@ -12,80 +12,62 @@
 
 #include "push_swap.h"
 
-static size_t	rotation_index_find(t_stack *stack, size_t *drops)
+/*
+** Returns the position of the minimum if the stack is a rotated sorted
+** sequence, otherwise stack->size. Assumes the stack is not sorted.
+*/
+static size_t	rotation_start_find(const t_stack *stack)
 {
-	t_node	*cur;
-	size_t	i;
-	size_t	start;
+	const t_node	*cur;
+	size_t			i;
+	size_t			start;
+	size_t			drops;
 
 	cur = stack->head;
 	i = 0;
 	start = 0;
-	*drops = 0;
+	drops = 0;
 	while (cur->next)
 	{
 		if (cur->value > cur->next->value)
 		{
-			(*drops)++;
+			drops++;
 			start = i + 1;
 		}
 		cur = cur->next;
 		i++;
 	}
+	if (drops != 1 || stack->head->value <= stack->tail->value)
+		return (stack->size);
 	return (start);
 }
 
-static t_rotation	rotation_analyze(t_stack *stack)
+t_strategy	adaptive_select(const t_context *ctx)
 {
-	t_rotation	result;
-	size_t		start;
-	size_t		drops;
-
-	result.op = RA;
-	result.count = 0;
-	result.possible = 0;
-	if (!stack || stack->size < 2)
-		return (result);
-	start = rotation_index_find(stack, &drops);
-	if (drops != 1 || stack->head->value <= stack->tail->value)
-		return (result);
-	result.possible = 1;
-	result.count = start;
-	if (start > stack->size - start)
-	{
-		result.op = RRA;
-		result.count = stack->size - start;
-	}
-	return (result);
-}
-
-static void	rotation_apply(t_context *ctx, t_rotation rotation)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < rotation.count)
-	{
-		op_execute(ctx, rotation.op);
-		i++;
-	}
+	if (ctx->disorder < DISORDER_LOW || ctx->a.size <= 5)
+		return (SIMPLE);
+	if (ctx->disorder < DISORDER_HIGH)
+		return (MEDIUM);
+	return (COMPLEX);
 }
 
 void	sort_adaptive(t_context *ctx)
 {
-	t_rotation	rotation;
+	size_t		start;
+	t_strategy	strategy;
 
-	if (!ctx || stack_is_sorted(&ctx->a))
+	if (!ctx)
 		return ;
-	rotation = rotation_analyze(&ctx->a);
-	if (rotation.possible)
+	start = rotation_start_find(&ctx->a);
+	if (start < ctx->a.size)
 	{
-		rotation_apply(ctx, rotation);
+		stack_move_to_top(ctx, &ctx->a, start);
 		return ;
 	}
-	if (ctx->disorder < DISORDER_LOW || ctx->a.size <= 5)
+	strategy = adaptive_select(ctx);
+	if (strategy == SIMPLE)
 		sort_simple(ctx);
-	else if (ctx->disorder < DISORDER_HIGH)
+	else if (strategy == MEDIUM)
 		sort_medium(ctx);
 	else
 		sort_complex(ctx);

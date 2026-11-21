@@ -59,13 +59,6 @@ typedef enum e_op
 	OP_COUNT
 }	t_op;
 
-typedef struct s_rotation
-{
-	t_op	op;
-	size_t	count;
-	int		possible;
-}	t_rotation;
-
 typedef struct s_context
 {
 	t_stack		a;
@@ -82,55 +75,57 @@ typedef struct s_context
 }	t_context;
 
 /* context */
-void	ctx_init(t_context *ctx);
-void	ctx_clear(t_context *ctx);
+void		ctx_init(t_context *ctx);
+void		ctx_clear(t_context *ctx);
 
 /* parser */
-void	parse_args(t_context *ctx, int argc, char **argv);
-int		parse_number(const char *s, int *out);
-int		stack_has_duplicate(const t_stack *stack);
+void		parse_args(t_context *ctx, int argc, char **argv);
+int			parse_number(const char *s, int *out);
+int			stack_has_duplicate(const t_stack *stack);
 
 /* stack */
-t_node	*node_new(int value);
-void	stack_init(t_stack *stack);
-void	stack_append(t_stack *stack, t_node *node);
-void	stack_clear(t_stack *stack);
-void	stack_swap(t_stack *stack);
-void	stack_push(t_stack *dst, t_stack *src);
-void	stack_rotate(t_stack *stack);
-void	stack_rev_rotate(t_stack *stack);
-int		stack_is_sorted(const t_stack *stack);
-size_t	stack_min_pos(const t_stack *stack);
-size_t	stack_max_pos(const t_stack *stack);
+t_node		*node_new(int value);
+void		stack_init(t_stack *stack);
+void		stack_append(t_stack *stack, t_node *node);
+void		stack_clear(t_stack *stack);
+void		stack_swap(t_stack *stack);
+void		stack_push(t_stack *dst, t_stack *src);
+void		stack_rotate(t_stack *stack);
+void		stack_rev_rotate(t_stack *stack);
+int			stack_is_sorted(const t_stack *stack);
+size_t		stack_min_pos(const t_stack *stack);
+size_t		stack_max_pos(const t_stack *stack);
 
 /* ops */
-int		op_apply(t_op op, t_stack *a, t_stack *b);
-void	op_execute(t_context *ctx, t_op op);
-int		op_buffer_add(t_context *ctx, t_op op);
-void	op_buffer_flush(t_context *ctx);
+int			op_apply(t_op op, t_stack *a, t_stack *b);
+void		op_execute(t_context *ctx, t_op op);
+int			op_buffer_add(t_context *ctx, t_op op);
+void		op_buffer_flush(t_context *ctx);
+const char	*op_name(t_op op);
 
 /* sort */
-void	sort_dispatch(t_context *ctx);
-void	sort_adaptive(t_context *ctx);
-void	sort_simple(t_context *ctx);
-void	sort_medium(t_context *ctx);
-void	sort_complex(t_context *ctx);
-double	disorder_compute(const t_stack *stack);
-void	stack_normalize(t_context *ctx);
-void	stack_move_to_top(t_context *ctx, t_stack *stack, size_t pos);
+void		sort_dispatch(t_context *ctx);
+void		sort_adaptive(t_context *ctx);
+t_strategy	adaptive_select(const t_context *ctx);
+void		sort_simple(t_context *ctx);
+void		sort_medium(t_context *ctx);
+void		sort_complex(t_context *ctx);
+double		disorder_compute(const t_stack *stack);
+void		stack_normalize(t_context *ctx);
+void		stack_move_to_top(t_context *ctx, t_stack *stack, size_t pos);
 
 /* bench */
-void	print_bench(t_context *ctx);
+void		print_bench(t_context *ctx);
 
 /* count only */
-void	print_count_only(t_context *ctx);
+void		print_count_only(t_context *ctx);
 
 /* utils */
-void	error_exit(t_context *ctx);
-char	**ft_split(char const *s, char c);
-void	split_free(char **ss);
-int		ft_strcmp(const char *s1, const char *s2);
-void	ft_putsize_fd(t_context *ctx, size_t size, int fd);
-void	ft_putstr_fd(t_context *ctx, const char *s, int fd);
+void		error_exit(t_context *ctx);
+char		**ft_split(char const *s, char c);
+void		split_free(char **ss);
+int			ft_strcmp(const char *s1, const char *s2);
+void		ft_putsize_fd(t_context *ctx, size_t size, int fd);
+void		ft_putstr_fd(t_context *ctx, const char *s, int fd);
 
 #endif
